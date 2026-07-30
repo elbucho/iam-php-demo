@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MessDetectorOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PHPCSFixerOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PHPCodeSnifferOptionsConfiguration">
+    <option name="highlightLevel" value="WARNING" />
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/iam/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/iam/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/iam/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/iam/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/flex" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/runtime" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/cache-contracts" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/polyfill-php85" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/dotenv" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/polyfill-deepclone" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/cache" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/iam/vendor/symfony/framework-bundle" />
+      <path value="$PROJECT_DIR$/iam/vendor/composer" />
+      <path value="$PROJECT_DIR$/resource/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/resource/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/resource/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/resource/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/resource/vendor/slim/slim" />
+      <path value="$PROJECT_DIR$/resource/vendor/nikic/fast-route" />
+      <path value="$PROJECT_DIR$/resource/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/resource/vendor/composer" />
+      <path value="$PROJECT_DIR$/resource/vendor/psr/http-server-handler" />
+      <path value="$PROJECT_DIR$/resource/vendor/slim/psr7" />
+      <path value="$PROJECT_DIR$/resource/vendor/fig/http-message-util" />
+      <path value="$PROJECT_DIR$/resource/vendor/psr/http-server-middleware" />
+    </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.4" />
+  <component name="PhpStanOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PsalmOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+</project>
