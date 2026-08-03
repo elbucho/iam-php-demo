@@ -1,6 +1,21 @@
 {
+    "type": "project",
+    "license": "proprietary",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
     "require": {
         "slim/slim": "4.*",
-        "slim/psr7": "^1.8"
+        "slim/psr7": "^1.8",
+        "predis/predis": "^3.5",
+        "php-di/php-di": "^7.1",
+        "elbucho/config": "^1.0",
+        "elbucho/database": "^1.2",
+        "guzzlehttp/guzzle": "^8.0",
+        "symfony/yaml": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
     }
 }

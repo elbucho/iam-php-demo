@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="MessDetector">
+    <phpmd_settings>
+      <phpmd_by_interpreter asDefaultInterpreter="true" interpreter_id="43aee666-1355-4287-ad35-f33e919057c4" timeout="30000" />
+    </phpmd_settings>
+  </component>
   <component name="MessDetectorOptionsConfiguration">
     <option name="transferred" value="true" />
   </component>
@@ -96,6 +101,22 @@
       <path value="$PROJECT_DIR$/iam/vendor/doctrine/sql-formatter" />
       <path value="$PROJECT_DIR$/iam/vendor/symfony/doctrine-bridge" />
       <path value="$PROJECT_DIR$/iam/vendor/nelmio/cors-bundle" />
+      <path value="$PROJECT_DIR$/resource/vendor/predis/predis" />
+      <path value="$PROJECT_DIR$/resource/vendor/laravel/serializable-closure" />
+      <path value="$PROJECT_DIR$/resource/vendor/php-di/invoker" />
+      <path value="$PROJECT_DIR$/resource/vendor/php-di/php-di" />
+      <path value="$PROJECT_DIR$/resource/vendor/elbucho/config" />
+      <path value="$PROJECT_DIR$/resource/vendor/pds/skeleton" />
+      <path value="$PROJECT_DIR$/resource/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/resource/vendor/elbucho/database" />
+      <path value="$PROJECT_DIR$/resource/vendor/symfony/polyfill-php82" />
+      <path value="$PROJECT_DIR$/resource/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/resource/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/resource/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/resource/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/resource/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/resource/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/resource/vendor/symfony/yaml" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.4" />
@@ -109,6 +130,7 @@
   </component>
   <component name="PhpUnit">
     <phpunit_settings>
+      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/resource/vendor/autoload.php" />
       <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/iam/vendor/autoload.php" />
     </phpunit_settings>
   </component>

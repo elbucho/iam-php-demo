@@ -14,6 +14,12 @@ services:
 #    volumes:
 #      - ./iam/mysql-init:/docker-entrypoint-initdb.d:ro
 
+  redis:
+    image: redis:8-alpine
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+
   client:
     build: ./client
     ports:
@@ -32,3 +38,4 @@ services:
       - "3002:80"
     depends_on:
       - db
+      - redis
