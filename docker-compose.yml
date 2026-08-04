@@ -9,16 +9,23 @@ services:
       MYSQL_PASSWORD: iam
 
     ports:
-      - "3307:3306"
+      - "3003:3306"
 
-#    volumes:
-#      - ./iam/mysql-init:/docker-entrypoint-initdb.d:ro
+    volumes:
+      - ./iam/mysql-init:/docker-entrypoint-initdb.d:ro,Z
+
+    healthcheck:
+      test: [ "CMD-SHELL", "mariadb-admin ping -h localhost -uroot -prootpassword" ]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 15s
 
   redis:
     image: redis:8-alpine
     restart: unless-stopped
     ports:
-      - "6379:6379"
+      - "3004:6379"
 
   client:
     build: ./client
@@ -30,12 +37,15 @@ services:
     ports:
       - "3001:80"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   resource:
     build: ./resource
     ports:
       - "3002:80"
     depends_on:
-      - db
-      - redis
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started

@@ -13,15 +13,13 @@ interface DoohickeyToolbarProps {
     onSearchChange: (value: string) => void;
     onCreate: () => void;
     isCreateDisabled?: boolean;
-    isCreateLoading?: boolean;
 }
 
 export default function DoohickeyToolbar({
     search,
     onSearchChange,
     onCreate,
-    isCreateDisabled = false,
-    isCreateLoading = false
+    isCreateDisabled = false
 }: DoohickeyToolbarProps) {
     console.log(isCreateDisabled);
 
@@ -54,7 +52,6 @@ export default function DoohickeyToolbar({
                     colorPalette="blue"
                     onClick={onCreate}
                     disabled={isCreateDisabled}
-                    loading={isCreateLoading}
                 >
                     <LuPlus />
                     New Doohickey

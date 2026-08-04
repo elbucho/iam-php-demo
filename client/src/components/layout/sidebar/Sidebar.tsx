@@ -1,8 +1,15 @@
-import { VStack, Box, Separator } from "@chakra-ui/react";
+import {
+    VStack,
+    Box,
+    Separator,
+    Spacer
+} from "@chakra-ui/react";
 import { sidebarNavigation } from "./SidebarNavigation";
 import { usePermissions } from "@/hooks/usePermissions";
 import SidebarItem from "./SidebarItem";
 import SidebarSection from "./SidebarSection";
+import SidebarHeader from "./SidebarHeader";
+import SidebarAccess from "./SidebarAccess";
 import SidebarFooter from "./SidebarFooter";
 
 export interface SidebarProps {
@@ -33,37 +40,44 @@ export default function Sidebar({
     return (
         <Box
             as="aside"
-            w={collapsed ? "72px" : "260px"}
+            w={collapsed ? "72px" : "280px"}
             h="100vh"
+            bg="gray.50"
             borderRightWidth="1px"
-            bg="gray.100"
-            p={3}
+            borderColor="gray.200"
             display="flex"
             flexDirection="column"
         >
-            <VStack
+            <SidebarHeader collapsed={collapsed} />
+
+            <Separator />
+
+            <SidebarAccess />
+
+            <Box
                 flex="1"
-                align="stretch"
-                gap={0}
+                overflowY="auto"
+                px={3}
+                py={4}
             >
-                {sidebarNavigation.map((section, index) => {
-                    const items = section.items.filter(
-                        item =>
-                            !item.permission ||
-                            permissions.has(item.permission)
-                    );
+                <VStack
+                    align="stretch"
+                    gap={6}
+                >
+                    {sidebarNavigation.map((section) => {
+                        const items = section.items.filter(
+                            item =>
+                                !item.permission ||
+                                permissions.has(item.permission)
+                        );
 
-                    if (items.length === 0) {
-                        return null;
-                    }
+                        if (items.length === 0) {
+                            return null;
+                        }
 
-                    return (
-                        <Box key={section.title}>
-                            {index > 0 && (
-                                <Separator my={4} />
-                            )}
-
+                        return (
                             <SidebarSection
+                                key={section.title}
                                 title={section.title}
                                 collapsed={collapsed}
                             >
@@ -75,10 +89,14 @@ export default function Sidebar({
                                     />
                                 ))}
                             </SidebarSection>
-                        </Box>
-                    );
-                })}
-            </VStack>
+                        );
+                    })}
+                </VStack>
+            </Box>
+
+            <Spacer />
+
+            <Separator />
 
             <SidebarFooter collapsed={collapsed} />
         </Box>

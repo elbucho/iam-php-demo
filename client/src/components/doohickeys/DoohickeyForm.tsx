@@ -50,7 +50,9 @@ const DoohickeyForm = forwardRef<DoohickeyFormHandle, DoohickeyFormProps>(
             if (Number.isNaN(parsedBars)) {
                 next.bars = "Bars must be a number.";
             } else if (parsedBars < 0) {
-                next.bars = "Cost must be zero or greater.";
+                next.bars = "Bars must be zero or greater.";
+            } else if (!Number.isInteger(parsedBars)) {
+                next.bars = "Bars must be an integer.";
             }
 
             setErrors(next);
@@ -98,9 +100,12 @@ const DoohickeyForm = forwardRef<DoohickeyFormHandle, DoohickeyFormProps>(
                 </Field.Root>
 
                 <Field.Root invalid={!!errors.bars}>
-                    <Field.Label>Cost</Field.Label>
+                    <Field.Label>Bars</Field.Label>
                     <Input
+                        type="number"
                         value={bars}
+                        step={1}
+                        min={0}
                         onChange={(e) => setBars(e.target.value)}
                     />
                     <Field.ErrorText>

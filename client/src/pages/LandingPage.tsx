@@ -1,5 +1,4 @@
 import {
-    Box,
     Button,
     Card,
     Container,
@@ -233,7 +232,21 @@ export default function LandingPage() {
                         </Card.Body>
                     </Card.Root>
 
-                    <Card.Root flex={1}>
+                    <Card.Root
+                        flex={1}
+                        w={{
+                            base: "100%",
+                            lg: "auto",
+                        }}
+                        maxW={{
+                            base: "700px",
+                            lg: "none",
+                        }}
+                        mx={{
+                            base: "auto",
+                            lg: 0
+                        }}
+                    >
                         <Card.Header>
                             <Heading size="lg">
                                 Demo Accounts:

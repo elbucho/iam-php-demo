@@ -1,5 +1,5 @@
 dsns:
-  host:   localhost
+  host:   db
   port:   3306
   dbname: resource
   user:   iam

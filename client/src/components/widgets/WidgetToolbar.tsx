@@ -13,15 +13,13 @@ interface WidgetToolbarProps {
     onSearchChange: (value: string) => void;
     onCreate: () => void;
     isCreateDisabled?: boolean;
-    isCreateLoading?: boolean;
 }
 
 export default function WidgetToolbar({
     search,
     onSearchChange,
     onCreate,
-    isCreateDisabled = false,
-    isCreateLoading = false
+    isCreateDisabled = false
 }: WidgetToolbarProps) {
     return (
         <HStack gap={4} w="100%" mb={4}>
@@ -52,7 +50,6 @@ export default function WidgetToolbar({
                     colorPalette="blue"
                     onClick={onCreate}
                     disabled={isCreateDisabled}
-                    loading={isCreateLoading}
                 >
                     <LuPlus />
                     New Widget

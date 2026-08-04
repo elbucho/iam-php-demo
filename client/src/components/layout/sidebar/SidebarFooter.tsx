@@ -1,15 +1,11 @@
 import {
     Box,
     Button,
-    Separator,
-    Stack,
     Text,
 } from "@chakra-ui/react";
 import { LogOut } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 import Tooltip from "@/components/common/Tooltip";
-import { authService } from "@/services/AuthService";
-import {useAuth} from "@/hooks/useAuth";
 
 export interface SidebarFooterProps {
     collapsed?: boolean;
@@ -19,11 +15,6 @@ export default function SidebarFooter({
     collapsed = false,
 }: SidebarFooterProps) {
     const auth = useAuth();
-    const navigate = useNavigate();
-    async function handleLogout() {
-        await authService.logout();
-        navigate("/");
-    }
 
     const logoutButton = (
         <Button
@@ -42,27 +33,7 @@ export default function SidebarFooter({
     );
 
     return (
-        <Box mt="auto" pt={4}>
-            <Separator mb={4} />
-
-            {!collapsed && (
-                <Stack gap={0} mb={3}>
-                    <Text
-                        fontWeight="semibold"
-                        fontSize="sm"
-                    >
-                        {auth.user?.name}
-                    </Text>
-
-                    <Text
-                        fontSize="xs"
-                        color="fg.muted"
-                    >
-                        Authenticated User
-                    </Text>
-                </Stack>
-            )}
-
+        <Box mt="auto" py={3}>
             {collapsed ? (
                 <Tooltip content="Sign Out">
                     {logoutButton}

@@ -1,0 +1,2 @@
+GRANT ALL PRIVILEGES ON resource.* to 'iam'@'%';
+FLUSH PRIVILEGES;

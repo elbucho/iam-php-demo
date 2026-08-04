@@ -4,6 +4,7 @@ USER root
 RUN apk add --no-cache \
     php85-mysqlnd \
     php85-pdo \
+    php85-pdo_mysql \
     php85-iconv \
     composer
 USER nobody
@@ -19,6 +20,7 @@ RUN composer install \
       --no-interaction
 
 COPY ./src ./src
+COPY ./config ./config
 COPY ./public ./public
 
 RUN composer dump-autoload --optimize
