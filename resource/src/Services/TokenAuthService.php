@@ -4,11 +4,13 @@ namespace App\Services;
 use Elbucho\Config\Config;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use Psr\Log\LoggerInterface;
 
 readonly class TokenAuthService
 {
     public function __construct(
-        private readonly Config $config
+        private readonly Config $config,
+        private readonly LoggerInterface $logger,
     ) { }
 
     /**
@@ -17,6 +19,8 @@ readonly class TokenAuthService
     public function getPermissions(string $token): array
     {
         $client = new Client();
+
+        $this->logger->debug("Fetching permissions");
 
         $response = $client->get(
             $this->config->get('permissions_uri'),
@@ -28,12 +32,6 @@ readonly class TokenAuthService
             ]
         );
 
-        $data = json_decode($response->getBody()->getContents(), true);
-
-        if (array_key_exists('permissions', $data)) {
-            return $data['permissions'];
-        }
-
-        return [];
+        return json_decode($response->getBody()->getContents(), true);
     }
 }
