@@ -6,6 +6,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Psr\Log\LoggerInterface;
 use Slim\Exception\HttpException;
 use App\Services\TokenLookupService;
 use App\Services\TokenAuthService;
@@ -14,7 +15,8 @@ readonly class AuthenticationMiddleware implements MiddlewareInterface
 {
     public function __construct(
         readonly private TokenLookupService $tokenLookupService,
-        readonly private TokenAuthService $tokenAuthService
+        readonly private TokenAuthService $tokenAuthService,
+        readonly private LoggerInterface $logger
     ) { }
 
     /**
@@ -37,7 +39,7 @@ readonly class AuthenticationMiddleware implements MiddlewareInterface
         // Token lookup service failed to find the key for this token
         if (empty($permissions)) {
             try {
-                $permissions = $this->tokenAuthService->getPermissions($matches[1]);
+                $response = $this->tokenAuthService->getPermissions($matches[1]);
             } catch (GuzzleException $e) {
                 throw new HttpException(
                     $request,
@@ -46,6 +48,18 @@ readonly class AuthenticationMiddleware implements MiddlewareInterface
                 );
             }
 
+            if (
+                ! array_key_exists('data', $response) ||
+                ! array_key_exists('permissions', $response['data'])
+            ) {
+                throw new HttpException(
+                    $request,
+                    'Missing data key from response',
+                    500
+                );
+            }
+
+            $permissions = $response['data']['permissions'];
             $this->tokenLookupService->save($matches[1], $permissions);
         }
 

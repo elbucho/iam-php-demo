@@ -32,6 +32,7 @@ class JsonErrorHandler extends ErrorHandler
             'error'     => [
                 'code'      => $code,
                 'message'   => $exception->getMessage(),
+                'trace'     => $exception->getTrace(),
             ]
         ];
 

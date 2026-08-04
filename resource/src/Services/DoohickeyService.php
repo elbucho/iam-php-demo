@@ -51,7 +51,7 @@ readonly class DoohickeyService
     public function updateDoohickey(Doohickey $doohickey): void
     {
         $this->database->exec("
-            UPDATE widgets SET
+            UPDATE doohickeys SET
                 name = :name,
                 foo  = :foo,
                 bars = :bars,

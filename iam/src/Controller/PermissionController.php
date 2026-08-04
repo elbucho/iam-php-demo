@@ -18,7 +18,10 @@ final class PermissionController extends AbstractController
         $user = $this->getUser();
 
         return new JsonResponse([
-            'permissions' => $permissionService->getPermissions($user),
+            'message'   => 'ok',
+            'data'      => [
+                'permissions' => $permissionService->getPermissions($user),
+            ]
         ]);
     }
 }

@@ -35,6 +35,10 @@ class ComposerStaticInit026509606a55be5c56c243e48adc6597
             'Predis\\' => 7,
             'Pds\\Skeleton\\' => 13,
         ),
+        'M' =>
+        array (
+            'Monolog\\' => 8,
+        ),
         'L' =>
         array (
             'Laravel\\SerializableClosure\\' => 28,
@@ -125,6 +129,10 @@ class ComposerStaticInit026509606a55be5c56c243e48adc6597
         'Pds\\Skeleton\\' =>
         array (
             0 => __DIR__ . '/..' . '/pds/skeleton/src',
+        ),
+        'Monolog\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
         'Laravel\\SerializableClosure\\' =>
         array (

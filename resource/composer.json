@@ -11,7 +11,8 @@
         "elbucho/config": "^1.0",
         "elbucho/database": "^1.2",
         "guzzlehttp/guzzle": "^8.0",
-        "symfony/yaml": "^8.1"
+        "symfony/yaml": "^8.1",
+        "monolog/monolog": "^3.10"
     },
     "autoload": {
         "psr-4": {

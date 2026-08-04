@@ -117,6 +117,7 @@
       <path value="$PROJECT_DIR$/resource/vendor/psr/http-client" />
       <path value="$PROJECT_DIR$/resource/vendor/symfony/polyfill-ctype" />
       <path value="$PROJECT_DIR$/resource/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/resource/vendor/monolog/monolog" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.4" />

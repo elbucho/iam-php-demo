@@ -3,9 +3,12 @@
 use App\Middleware\JsonErrorHandler;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Psr7\Response as SlimResponse;
 use Psr\Http\Server\RequestHandlerInterface;
 use Slim\Factory\AppFactory;
 use DI\Container;
+use Psr\Log\LoggerInterface;
+use App\Logging\LoggerFactory;
 use App\Middleware\AuthenticationMiddleware;
 use App\Services\TokenAuthService;
 use App\Services\TokenLookupService;
@@ -21,6 +24,10 @@ use \Predis\Client as RedisClient;
 require __DIR__ . '/../vendor/autoload.php';
 
 $container = new Container();
+
+$container->set(LoggerInterface::class, function () {
+    return LoggerFactory::create();
+});
 
 $container->set('config', function () {
     $configDir = dirname(__DIR__) . '/config';
@@ -48,13 +55,17 @@ $container->set('token.lookup', function (Container $container) {
 
 $container->set('token.auth', function (Container $container) {
     $config = $container->get('config');
-    return new TokenAuthService($config->get('tokenAuth'));
+    return new TokenAuthService(
+        $config->get('tokenAuth'),
+        $container->get(LoggerInterface::class),
+    );
 });
 
 $container->set('auth.middleware', function (Container $container) {
     return new AuthenticationMiddleware(
         $container->get('token.lookup'),
-        $container->get('token.auth')
+        $container->get('token.auth'),
+        $container->get(LoggerInterface::class),
     );
 });
 
@@ -101,7 +112,7 @@ $app->add(function (Request $request, RequestHandlerInterface $handler) {
             rtrim($path, '/')
         );
 
-        $response = new \Slim\Psr7\Response();
+        $response = new SlimResponse();
 
         return $response
             ->withHeader('Location', (string) $uri)
@@ -111,10 +122,34 @@ $app->add(function (Request $request, RequestHandlerInterface $handler) {
     return $handler->handle($request);
 });
 
+// Set headers and allow CORS
+$app->add(function (Request $request, RequestHandlerInterface $handler) {
+    if ($request->getMethod() === 'OPTIONS') {
+        $response = new SlimResponse();
+    } else {
+        $response = $handler->handle($request);
+    }
+
+    return $response
+        ->withHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
+        ->withHeader(
+            'Access-Control-Allow-Headers',
+            'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+        )
+        ->withHeader(
+            'Access-Control-Allow-Methods',
+            'GET, POST, PATCH, PUT, DELETE, OPTIONS'
+        )
+        ->withHeader(
+            'Access-Control-Allow-Credentials',
+            'true'
+        );
+});
+
 // Add protected routes
 $app->group('', function ($group) {
     $group->any('/widgets[/{id}]', WidgetController::class);
-    $group->any('/doohickeys/[{id}]', DoohickeyController::class);
+    $group->any('/doohickeys[/{id}]', DoohickeyController::class);
 })->add('auth.middleware');
 
 $app->get('/', function (Request $request, Response $response) {

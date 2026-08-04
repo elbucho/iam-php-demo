@@ -35,7 +35,10 @@ abstract class AbstractController
 
         $response->getBody()->write(
             json_encode(
-                $data,
+                [
+                    'message' => 'ok',
+                    'data' => $data
+                ],
                 true
             )
         );
