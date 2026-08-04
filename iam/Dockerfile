@@ -12,7 +12,6 @@ COPY ./bin ./bin
 COPY ./config ./config
 COPY ./public ./public
 COPY ./src ./src
-COPY ./var ./var
 COPY ./.env* ./
 COPY ./composer.* ./
 
