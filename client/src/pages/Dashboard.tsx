@@ -4,27 +4,16 @@ import {
     Card,
     Flex,
     Heading,
-    Icon,
     List,
     SimpleGrid,
     Stack,
     Text,
 } from "@chakra-ui/react";
-
-import {
-    LuArrowRight,
-    LuBoxes,
-    LuShieldCheck,
-    LuPackage,
-    LuServer,
-    LuDatabase,
-    LuKeyRound,
-} from "react-icons/lu";
-
+import { LuArrowRight } from "react-icons/lu";
 import { Link } from "react-router-dom";
-
 import { useAuth } from "@/hooks/useAuth";
 import { usePermissions } from "@/hooks/usePermissions";
+import CompanyCard from "@/components/common/CompanyCard";
 
 export default function Dashboard() {
     const auth = useAuth();
@@ -127,54 +116,12 @@ export default function Dashboard() {
                         }}
                         gap={6}
                     >
-                        <Stack align="center">
-                            <Icon as={LuBoxes} boxSize={8} />
-                            <Text fontWeight="medium">
-                                React
-                            </Text>
-                            <Badge>TypeScript</Badge>
-                        </Stack>
-
-                        <Stack align="center">
-                            <Icon as={LuShieldCheck} boxSize={8} />
-                            <Text fontWeight="medium">
-                                Chakra UI
-                            </Text>
-                        </Stack>
-
-                        <Stack align="center">
-                            <Icon as={LuKeyRound} boxSize={8} />
-                            <Text fontWeight="medium">
-                                Okta
-                            </Text>
-                        </Stack>
-
-                        <Stack align="center">
-                            <Icon as={LuServer} boxSize={8} />
-                            <Text fontWeight="medium">
-                                Symfony
-                            </Text>
-                            <Text fontSize="sm">
-                                IAM Server
-                            </Text>
-                        </Stack>
-
-                        <Stack align="center">
-                            <Icon as={LuPackage} boxSize={8} />
-                            <Text fontWeight="medium">
-                                Slim
-                            </Text>
-                            <Text fontSize="sm">
-                                Resource API
-                            </Text>
-                        </Stack>
-
-                        <Stack align="center">
-                            <Icon as={LuDatabase} boxSize={8} />
-                            <Text fontWeight="medium">
-                                MariaDB
-                            </Text>
-                        </Stack>
+                        <CompanyCard name="React" icon_url="/icons/react.svg" badge="TypeScript" />
+                        <CompanyCard name="Chakra UI" icon_url="/icons/chakra.svg" />
+                        <CompanyCard name="Okta" icon_url="/icons/okta.svg" />
+                        <CompanyCard name="Symfony" icon_url="/icons/symfony.svg" subtitle="IAM Server" />
+                        <CompanyCard name="Slim" icon_url="/icons/slim.svg" subtitle="Resource API"/>
+                        <CompanyCard name="MariaDB" icon_url="/icons/mariadb.svg" />
                     </SimpleGrid>
                 </Card.Body>
             </Card.Root>
