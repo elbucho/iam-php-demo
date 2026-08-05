@@ -7,28 +7,30 @@ import {
 
 export interface CompanyCardProps {
     name: string;
-    icon_url: string;
+    iconPath: string;
     subtitle?: string;
     badge?: string;
+    badgeColor?: string;
 }
 
 export default function CompanyCard({
     name,
-    icon_url,
+    iconPath,
     subtitle = '',
-    badge = ''
+    badge = '',
+    badgeColor = 'default'
 }: CompanyCardProps) {
     return (
-        <Stack align="center">
-            <Image src={icon_url} boxSize={8} />
+        <Stack align="center" gap={0}>
+            <Image src={iconPath} boxSize={8} />
             <Text fontWeight="medium">
                 {name}
             </Text>
             {badge && (
-                <Badge>TypeScript</Badge>
+                <Badge fontSize="xs" colorPalette={badgeColor}>{badge}</Badge>
             )}
             {subtitle && (
-                <Text fontSize="sm">
+                <Text fontSize="sm" fontStyle="italic">
                     {subtitle}
                 </Text>
             )}

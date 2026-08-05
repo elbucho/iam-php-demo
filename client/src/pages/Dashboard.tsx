@@ -116,12 +116,44 @@ export default function Dashboard() {
                         }}
                         gap={6}
                     >
-                        <CompanyCard name="React" icon_url="/icons/react.svg" badge="TypeScript" />
-                        <CompanyCard name="Chakra UI" icon_url="/icons/chakra.svg" />
-                        <CompanyCard name="Okta" icon_url="/icons/okta.svg" />
-                        <CompanyCard name="Symfony" icon_url="/icons/symfony.svg" subtitle="IAM Server" />
-                        <CompanyCard name="Slim" icon_url="/icons/slim.svg" subtitle="Resource API"/>
-                        <CompanyCard name="MariaDB" icon_url="/icons/mariadb.svg" />
+                        <CompanyCard
+                            name="React"
+                            iconPath="/icons/react.svg"
+                            badge="TypeScript 7"
+                            badgeColor="blue"
+                            subtitle="Client"
+                        />
+
+                        <CompanyCard
+                            name="Chakra UI"
+                            iconPath="/icons/chakra.svg"
+                        />
+
+                        <CompanyCard
+                            name="Okta"
+                            iconPath="/icons/okta.svg"
+                        />
+
+                        <CompanyCard
+                            name="Symfony"
+                            iconPath="/icons/symfony.svg"
+                            badge="PHP 8.4"
+                            badgeColor="purple"
+                            subtitle="IAM Server"
+                        />
+
+                        <CompanyCard
+                            name="Slim"
+                            iconPath="/icons/slim.svg"
+                            badge="PHP 8.4"
+                            badgeColor="purple"
+                            subtitle="Resource API"
+                        />
+
+                        <CompanyCard
+                            name="MariaDB"
+                            iconPath="/icons/mariadb.svg"
+                        />
                     </SimpleGrid>
                 </Card.Body>
             </Card.Root>
