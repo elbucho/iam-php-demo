@@ -1,6 +1,5 @@
 import {
-    HStack,
-    VStack,
+    Box,
     Image,
     Text
 } from "@chakra-ui/react";
@@ -14,29 +13,30 @@ export default function SidebarHeader({
     collapsed = false
 }: SidebarHeaderProps) {
     return (
-        <HStack
+        <Box
             asChild
-            px={5}
+            px={collapsed ? 2 : 5}
             py={5}
-            gap={3}
-            align="center"
         >
             <Link
                 to="/"
-                style={{ textDecoration: "none" }}
+                style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: collapsed ? "center" : "flex-start",
+                    gap: "12px",
+                    textDecoration: "none"
+                }}
             >
                 <Image
                     src="/iam.svg"
                     alt="IAM PHP Demo"
-                    boxSize="40px"
+                    boxSize={collapsed ? "44px" : "40px"}
                     flexShrink={0}
                 />
 
                 {!collapsed && (
-                    <VStack
-                        align="start"
-                        gap={0}
-                    >
+                    <Box>
                         <Text
                             fontSize="xl"
                             fontWeight="bold"
@@ -56,9 +56,9 @@ export default function SidebarHeader({
                         >
                             Identity &amp; Access Management
                         </Text>
-                    </VStack>
+                    </Box>
                 )}
             </Link>
-        </HStack>
+        </Box>
     );
 }

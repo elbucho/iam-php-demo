@@ -52,7 +52,9 @@ export default function Sidebar({
 
             <Separator />
 
-            <SidebarAccess />
+            {!collapsed && (
+                <SidebarAccess />
+            )}
 
             <Box
                 flex="1"

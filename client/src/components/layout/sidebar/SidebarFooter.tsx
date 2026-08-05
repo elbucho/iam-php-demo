@@ -19,6 +19,7 @@ export default function SidebarFooter({
     const logoutButton = (
         <Button
             variant="ghost"
+            w={collapsed ? "40px" : "100%"}
             justifyContent={collapsed ? "center" : "flex-start"}
             onClick={() => void auth.logout()}
         >
@@ -33,7 +34,12 @@ export default function SidebarFooter({
     );
 
     return (
-        <Box mt="auto" py={3}>
+        <Box
+            mt="auto"
+            py={3}
+            display="flex"
+            justifyContent={collapsed ? "center" : "stretch"}
+        >
             {collapsed ? (
                 <Tooltip content="Sign Out">
                     {logoutButton}
